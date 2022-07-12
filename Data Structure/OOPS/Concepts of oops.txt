@@ -1,0 +1,1140 @@
+
+/*
+
+ 1. WHAT IS OOPS ?
+
+ 	OOP stands for Object-Oriented Programming.
+
+ 	It is a programming paradigm that relies on the concept of classes and objects.
+ 	It defines a code blueprint which is called as classes , which are used to create
+ 	individual instances of objects.
+
+
+ BENEFITS OF OOPS:
+
+ 	1.OOP is faster and easier to execute
+
+  	2.OOP makes it possible to create full reusable applications with less code and shorter development time
+
+ 	3.Easier to debug, classes often contain all applicable information to them
+
+ 	4.Secure, protects information through encapsulation
+
+
+
+ 2. How OOPS IS REALTED TO THE REAL WORLD ? EXAMPLE.
+
+ 	OOPS is used to solved real world problems. Let take a example of mobile phone,
+ 	Here mobile phone is Object.
+ 	Now there can be many logics behind the working of mobile phone,
+ 	like calling , sending message etc.
+ 	For every logic we can implement a class , and every class can can have its method which will
+ 	do this logics. So this way we can say that OOPs is related to real world problem.
+
+
+ 3. Why to study OOPS ?
+
+ 	1. OOP provides a clear modular structure for programs which makes it good
+ 	   for defining abstract data types where implementation details are hidden
+ 	   and the unit has a clearly defined interface.
+
+	2. OOP makes it easy to maintain and modify existing code as new objects
+	   can be created with small differences to existing ones.
+
+	3. OOP provides a good framework for code libraries where supplied software
+	   components can be easily adapted and modified by the programmer.
+	   This is particularly useful for developing graphical user interfaces.
+
+ 4. Limitations of OOPS ?
+
+	1. Steep learning curve: The thought process involved in object-oriented programming
+	   may not be natural for some people, and it can take time to get used to it. It is
+	   complex to create programs based on interaction of objects. Some of the key
+	   programming techniques, such as inheritance and polymorphism, can be
+	   challenging to comprehend initially
+
+	2. Larger program size: Object-oriented programs typically involve more lines of code
+	   than procedural programs
+
+ 	3. Slower programs: Object-oriented programs are typically slower than procedure based
+ 	   programs, as they typically require more instructions to be executed.
+
+	4. Not suitable for all types of problems: There are problems that lend themselves well
+	   to functional-programming style, logic-programming style, or procedure-based
+	   programming style, and applying object-oriented programming in those situations will
+	   not result in efficient programs
+
+_____________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________
+ 5. ACCESS MODIFIERS
+    The access modifiers in Java specifies the accessibility or scope of a field,
+    method, constructor, or class. We can change the access level of fields,
+    constructors, methods, and class by applying the access modifier on it.
+
+	__There are four types of Java access modifiers:
+
+	1. Private: The access level of a private modifier is only within the class.
+	   It cannot be accessed from outside the class.
+
+	2. Default: The access level of a default modifier is only within the package.
+	   It cannot be accessed from outside the package. If you do not specify any
+	   access level, it will be the default.
+
+	3. Protected: The access level of a protected modifier is within the package and
+	   outside the package through child class. If you do not make the child class,
+	   it cannot be accessed from outside the package.
+
+	4. Public: The access level of a public modifier is everywhere. It can be accessed
+	   from within the class, outside the class, within the package and outside the package.
+
+
+		Access Modifier |  within class |	within package  | outside package by subclass only | outside package
+		                |               |                   |                                  |
+		Private		    |       Y       |        N          |          N                       |      N
+		Default		    |       Y       |        Y          |          N                       |      N
+		Protected	    |       Y       |        Y          |          Y                       |      N
+		Public	        |       Y       |        Y          |          Y                       |      Y
+
+		https://www.javatpoint.com/access-modifiers
+
+
+
+_____1. PRIVATE access modifier___________________________________________________________________________
+
+        In this example, we have created two classes A and Simple.
+        A class contains private data member and private method. We are accessing
+        these private members from outside the class, so there is a compile-time error.
+
+         class A{
+
+             private int data = 40;
+
+             private void msg(){
+                 System.out.println("Hello java");}
+             }
+
+         public class Simple{
+
+              public static void main(String args[]){
+
+                A obj = new A();
+
+                System.out.println(obj.data);//Compile Time Error
+
+                obj.msg();//Compile Time Error
+
+                }
+         }
+
+        If you make any class constructor private, you cannot create
+        the instance of that class from outside the class.
+
+        class A{
+        	//private constructor
+        	private A(){
+        	}
+        	void msg(){
+        		System.out.println("Hello java");
+        		}
+
+        	}
+
+        public class Simple{
+         public static void main(String args[]){
+
+           A obj=new A(); //Compile Time Error
+
+          }
+        }
+
+
+________2. DEFAULT access modifier___________________________________________________________________________
+
+		If you don't use any modifier, it is treated as default by default.
+
+		In this example, we have created two packages pack and mypack.
+		We are accessing the A class from outside its package, since A class
+		is not public, so it cannot be accessed from outside the package.
+
+
+		_FILE A.java___________________
+
+		package pack;
+
+		class A{
+
+		  void msg(){      // no access modifier used so, default
+
+		  	System.out.println("Hello");}
+		}
+
+
+		_FILE B.java__________________
+
+
+		In the above example, the scope of class A and its method msg()
+		is default so it cannot be accessed from outside the package.
+
+		package mypack;
+		import pack.*;
+
+		class B{
+
+			  public static void main(String args[]){
+
+			   	A obj = new A(); //Compile Time Error
+
+			   	obj.msg(); //Compile Time Error
+
+			  }
+		}
+
+
+________3. PROTECTED access modifier___________________________________________________________________________
+
+		In this example, we have created the two packages pack and mypack.
+		The A class of pack package is public, so can be accessed from outside
+		the package. But msg method of this package is declared as protected,
+		so it can be accessed from outside the class only through inheritance
+
+		_A.java_______________
+
+		package pack;
+
+		public class A{
+
+			protected void msg(){
+				System.out.println("Hello");}
+
+		}
+
+
+		_B.java_______________
+
+		package mypack;
+		import pack.*;
+
+		class B extends A{
+
+		  public static void main(String args[]){
+		   B obj = new B();
+		   obj.msg();
+
+		  }
+		}
+_____________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________
+
+	6. PILLARS OF OOPS
+
+
+		1. POLYMORPHISM
+
+			Polymorphism in Java is a concept by which we can perform a single action in
+			different ways. Polymorphism is derived from 2 Greek words: poly and morphs.
+			The word "poly" means many and "morphs" means forms. So polymorphism means many forms.
+
+			There are two types of polymorphism in Java:
+
+				* Compile-time polymorphism and
+
+			 	* Runtime polymorphism.
+
+			We can perform polymorphism in java by METHOD OVERLADING and METHOD OVERRIDING
+
+			If you overload a static method in Java, it is the example of compile time
+			polymorphism. Here, we will focus on runtime polymorphism in java.
+
+
+
+
+
+			A . JAVA METHOD OVERRIDING
+
+
+
+				During inheritance in Java, if the same method is present in both
+				the superclass and the subclass. Then, the method in the subclass
+				overrides the same method in the superclass. This is called method
+				overriding.
+
+
+				NOTE: The method that is called is determined during the execution
+				of the program. Hence, method overriding is a run-time polymorphism.
+
+				Example 1: Polymorphism using METHOD OVERRIDING
+
+
+				class Language {
+
+					public void displayInfo() {
+
+					    System.out.println("Common English Language");
+					  }
+					}
+
+
+				class Java extends Language {
+
+					  public void displayInfo() {
+
+					    System.out.println("Java Programming Language");
+					  }
+					}
+
+
+				class Main {
+
+					 public static void main(String[] args) {
+
+
+					 	// create an object of Java class
+					    Java j1 = new Java();
+					    j1.displayInfo();
+
+
+					    // create an object of Language class
+					    Language l1 = new Language();
+					    l1.displayInfo();
+					  }
+					}
+
+
+				Output:
+
+					Java Programming Language
+					Common English Language
+
+
+
+
+			B. JAVA METHOD OVERLOADING
+
+
+				In a Java class, we can create methods with the same name if they differ in parameters. For example,
+
+				void func() { ... }
+				void func(int a) { ... }
+				float func(double a) { ... }
+				float func(int a , float b) { ... }
+
+				This is known as method overloading in Java
+
+
+				Two or more methods can have the same name inside the same class if they accept different arguments. This feature is known as method overloading.
+
+				Method overloading is achieved by either:
+
+				1. changing the number of arguments.
+				2. or changing the data type of arguments.
+
+				It is not method overloading if we only change the return type of methods.
+				There must be differences in the number of parameters.
+
+				NOTE: The RETURN types of the above methods are not the same.
+				It is because method overloading is NOT associated with RETRUN types.
+				Overloaded methods may have the same or different return types, but
+				they must differ in parameters
+
+
+				Example 3: Polymorphism using method overloading
+
+
+
+				 class Pattern {
+
+					  // method without parameter
+					  public void display() {
+
+					    for (int i = 0; i < 10; i++) {
+					      System.out.print("*");
+					    }
+
+					  }
+
+					  // method with single parameter
+					  public void display(char symbol) {
+
+					    for (int i = 0; i < 10; i++) {
+					      System.out.print(symbol);
+					    }
+
+					  }
+					}
+
+				 class Main {
+
+					 public static void main(String[] args) {
+					    Pattern d1 = new Pattern();
+
+					    // call method without any argument
+					    d1.display();
+					    System.out.println("\n");
+
+					    // call method with a single argument
+					    d1.display('#');
+					  }
+					}
+
+					In the above example, we have created a class named Pattern.
+					The class contains a method named display() that is overloaded.
+
+					// method with no arguments
+					display() {...}
+
+					// method with a single char type argument
+					display(char symbol) {...}
+
+_____________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________
+
+		2. INHERITANCE
+
+			Inheritance is one of the key features of OOP that allows
+			us to create a new class from an existing class.
+
+			The new class that is created is known as subclass (child or derived class)
+			and the existing class from where the child class is derived is known
+			as superclass (parent or base class).
+
+
+
+
+
+			Disadvantages:-
+
+			Inherited functions work slower than normal function as there is indirection.
+
+			Improper use of inheritance may lead to wrong solutions.
+
+			Often, data members in the base class are left unused which may lead to memory wastage.
+
+			Inheritance increases the coupling between base class and derived class.
+
+			A change in base class will affect all the child classes.
+
+
+			Advantages:
+
+			Inheritance promotes reusability. When a class inherits or derives another class,
+			it can access all the functionality of inherited class.
+
+			Reusability enhanced reliability. The base class code will be already tested and debugged.
+
+			As the existing code is reused, it leads to less development and maintenance costs.
+
+			Inheritance makes the sub classes follow a standard interface.
+
+			Inheritance helps to reduce code redundancy and supports code extensibility.
+
+			Inheritance facilitates creation of class libraries.
+
+
+			''' The extends keyword is used to perform inheritance in Java.'''
+
+			class Animal {
+		  		// methods and fields
+			}
+
+
+			// use of extends keyword
+			// to perform inheritance
+			class Dog extends Animal {
+		  		// methods and fields of Animal
+		  		// methods and fields of Dog
+			}
+
+
+			Example 1: Java Inheritance
+
+
+
+			class Animal {
+
+			  String name;
+
+			  public void eat() {
+			    System.out.println("I can eat");
+			  }
+			}
+
+
+
+			class Dog extends Animal {
+
+			  public void display() {
+			    System.out.println("My name is " + name);
+			  }
+			}
+
+
+
+			class Main {
+			  public static void main(String[] args) {
+
+			    // create an object of the subclass
+			    Dog labrador = new Dog();
+
+
+			    labrador.name = "Rohu";       dog class has no name field, but it has inherited it from Animal class
+			    labrador.display();
+
+
+			    // call method of superclass
+			    // using object of subclass
+			    labrador.eat();
+
+			  }
+			}
+			Output :
+				My name is Rohu
+				I can eat
+
+
+
+		 	Example 2. super Keyword in Java Inheritance
+
+		 			super keyword is used to call the method of the parent
+		 			class from the method of the child class.
+
+
+				class Animal {
+
+				  	// method in the superclass
+				  	public void eat() {
+				    	System.out.println("I can eat");
+				  	}
+				}
+
+
+				class Dog extends Animal {
+
+				  public void eat() {
+
+				    // call method of superclass
+				    super.eat();
+
+				    System.out.println("I eat dog food");
+				  }
+
+				  public void bark() {
+				    System.out.println("I can bark");
+				  }
+				}
+
+
+
+
+				class Main {
+				  public static void main(String[] args) {
+
+				    Dog labrador = new Dog();
+
+				    labrador.eat();
+				    labrador.bark();
+				  }
+				}
+
+			Output :
+				I can eat
+				I eat dog food
+				I can bark
+
+			super.eat();   the super keyword is used to call the eat() method present in the superclass.
+
+
+
+			TYPES OF INHERITANCE IN JAVA
+
+				1. SINGLE
+
+					   (P)
+						^
+						|
+					   (C1)
+
+				Class P {
+				 // fields and methods
+				}
+
+
+				class C1 extends P {
+				 // fields and methods
+
+
+
+				2. MULTILEVEL
+
+					   (P)
+						^
+						|
+				       (C1)
+						^
+						|
+					   (C2)
+					    ^
+					    |
+					   (C3)
+
+				Class P {
+				 // fields and methods
+				}
+
+
+				class C1 extends P {
+				 // fields and methods
+				}
+
+				class C2 extends C1 {
+				 // fields and methods
+				}
+
+				class C3 extends C2 {
+				 // fields and methods
+				}
+
+
+
+				3. HIERARICHAL
+
+						  (A)
+						  ^^ ^
+						 / |  \
+						/  |   \
+				     (C1) (C2) (C3)
+
+
+				Class P {
+				 // fields and methods
+				}
+
+
+				class C1 extends P {
+				 // fields and methods
+				}
+
+				class C2 extends P {
+				 // fields and methods
+				}
+
+				class C3 extends P {
+				 // fields and methods
+				}
+
+				4. MULTIPLE
+
+					NOTE : Multiple inheritance is not supported in Java through class.
+					 	   Multiple inheritance you need to achieve this using interfaces
+
+					To reduce the complexity and simplify the language, multiple inheritance is not supported in java.
+
+
+
+					Example, why java does not supports multiple.
+
+					Consider a scenario where A, B, and C are three classes.
+					The C class inherits A and B classes. If A and B classes
+					have the same method and you call it from child class object,
+					there will be ambiguity to call the method of A or B class.
+
+
+					class A{
+						void msg(){System.out.println("Hello");}
+					}
+
+					class B{
+						void msg(){System.out.println("Welcome");}
+					}
+
+					class C extends A,B{ //suppose if it were
+
+
+				 	public static void main(String args[]){
+				   		C obj=new C();
+				   		obj.msg();//Now which msg() method would be invoked?
+
+						}
+					}
+
+					OUTPUT: Compile Time Error
+
+
+
+				5. HYBRID
+
+				     	   (A)
+						  ^  ^
+						 /    \
+						/      \
+				     (C1)     (C3)
+				        \      /
+					     \    /
+					       (D)
+
+			 		NOTE :Since Java does not support multiple inheritance, hybrid inheritance is also not possible in Java.
+
+_____________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________
+
+		3. ENCAPSULATON
+
+			Encapsulation refers to the bundling of fields and methods inside a single class.
+			It prevents outer classes from accessing and changing fields and methods of a class.
+			This also helps to achieve data hiding.
+
+			The whole idea behind encapsulation is to hide the implementation details from users.
+			If a data member is private it means it can only be accessed within the same class.
+			No outside class can access private data member (variable) of other class.
+
+
+			Encapsulation refers to the bundling of related fields and methods together.
+			This can be used to achieve data hiding. Encapsulation in itself is not data hiding.
+
+			In Java, encapsulation helps us to keep related fields and methods together,
+			which makes our code cleaner and easy to read.
+
+
+
+
+			How to implement encapsulation in java:
+
+				1) Make the instance variables private so that they cannot be accessed
+				   directly from outside the class. You can only set and get values of
+				   these variables through the methods of the class.
+
+				2) Have getter and setter methods in the class to set and get
+				   the values of the fields.
+
+			Real world example : Banking website, where security is important factor
+
+
+			Example of encapsulation
+
+					class Person {
+
+					  // private field
+					  private int age;
+
+					  // getter method
+					  public int getAge() {
+					    return age;
+					  }
+
+					  // setter method
+					  public void setAge(int age) {
+					    this.age = age;
+					  }
+					}
+
+					class Main {
+					  public static void main(String[] args) {
+
+					    // create an object of Person
+					    Person p1 = new Person();
+
+					    // change age using setter
+					    p1.setAge(24);
+
+					    // access age using getter
+					    System.out.println("My age is " + p1.getAge());
+					  }
+					}
+
+_____________________________________________________________________________________________________________________________________________
+_____________________________________________________________________________________________________________________________________________
+
+		4. ABSTRACTION
+
+			Data abstraction is the process of hiding certain details and showing
+			only essential information to the user.
+
+			Abstraction can be achieved with either A. abstract classes or B. interfaces
+
+____________A. Java Abstract Class:
+
+				_1. The abstract class in Java cannot be instantiated (we cannot create objects of abstract classes).
+
+				_2. We use the abstract keyword to declare an abstract class.
+
+				Example:
+
+					// create an abstract class
+
+					abstract class Language {
+					  // fields and methods
+					}
+					...
+
+
+					// try to create an object Language , throws an error
+					Language obj = new Language();
+
+
+
+				_3. An abstract class can have both the regular methods and abstract methods.
+
+				Example:
+
+					abstract class Language {
+
+					  // abstract method  -> no body
+					  abstract void method1();
+
+					  // regular method -> with body
+					  void method2() {
+					    System.out.println("This is regular method");
+					  }
+					}
+
+				Java Abstract Method :: A method that doesn't have its body is known as an abstract method.
+										We use the same abstract keyword to create abstract methods.
+
+											abstract void display();
+
+
+				_4. If a class contains an abstract method, then the class should be declared abstract,
+				   Otherwise, it will generate an error.
+
+				Example:
+
+						// error
+						// class should be abstract
+
+						class Language {
+
+						  // abstract method
+						  abstract void method1();
+						}
+
+				_5. Though abstract classes cannot be instantiated, we can create subclasses
+					from it. We can then access members of the abstract class
+					using the object of the subclass.
+
+					Example:
+
+						abstract class Language {
+
+					  	 // method of abstract class
+						  public void display() {
+						    System.out.println("This is Java Programming");
+						  }
+						}
+
+						class Main extends Language {
+
+						  public static void main(String[] args) {
+
+						    // create an object of Main
+						    Main obj = new Main();
+
+						    // access method of abstract class
+						    // using object of Main class
+						    obj.display();
+						  }
+						}
+
+
+					Output:
+						This is Java programming
+
+
+					In the above example, we have created an abstract class named Language.
+					The class contains a regular method display().
+
+					We have created the Main class that inherits the abstract class. Notice the statement,
+
+					obj.display();
+
+					Here, obj is the object of the child class Main. We are calling the method of
+					the abstract class using the object obj.
+
+
+
+
+
+					IMPLEMENTING Abstract Methods:::
+
+					  If the abstract class includes any abstract method, then all the child
+					  classes inherited from the abstract superclass must provide the
+					  implementation of the abstract method.
+
+
+					   Example:
+
+							abstract class Animal {
+
+							  abstract void makeSound();
+
+							  public void eat() {
+							    System.out.println("I can eat.");
+							  }
+							}
+
+
+							class Dog extends Animal {
+
+							  // provide implementation of abstract method
+							  public void makeSound() {
+							    System.out.println("Bark bark");
+							  }
+							}
+
+
+							class Main {
+							  public static void main(String[] args) {
+
+							    // create an object of Dog class
+							    Dog d1 = new Dog();
+
+							    d1.makeSound();
+							    d1.eat();
+							  }
+							}
+
+						Output:
+							Bark bark
+							I can eat.
+
+					In the above example, we have created an abstract class Animal. The class
+					contains an abstract method makeSound() and a non-abstract method eat().
+
+					We have inherited a subclass Dog from the superclass Animal. Here,
+					the subclass Dog provides the implementation for the abstract method makeSound().
+
+					We then used the object d1 of the Dog class to call methods makeSound() and eat().
+
+					Note: If the Dog class doesn't provide the implementation of the abstract method makeSound(),
+					Dog should also be declared as abstract. This is because the subclass Dog inherits
+					makeSound() from Animal.
+
+
+
+
+
+					JAVA ABSTRACTION:
+
+
+						abstract class MotorBike {
+
+						  abstract void brake();
+
+						}
+
+
+
+						class SportsBike extends MotorBike {
+
+						  // implementation of abstract method
+						  public void brake() {
+						    System.out.println("SportsBike Brake");
+						  }
+						}
+
+
+						class MountainBike extends MotorBike {
+
+						  // implementation of abstract method
+						  public void brake() {
+						    System.out.println("MountainBike Brake");
+						  }
+						}
+
+
+
+						class Main {
+						  public static void main(String[] args) {
+						    MountainBike m1 = new MountainBike();
+						    m1.brake();
+						    SportsBike s1 = new SportsBike();
+						    s1.brake();
+						  }
+						}
+
+					Output:
+
+						MountainBike Brake
+						SportsBike Brake
+
+
+					In the above example, we have created an abstract super class MotorBike.
+					The superclass MotorBike has an abstract method brake().
+
+					The brake() method cannot be implemented inside MotorBike.
+					It is because every bike has different implementation of brakes.
+					 So, all the subclasses of MotorBike would have different implementation of brake().
+
+					So, the implementation of brake() in MotorBike is kept hidden.
+
+					Here, MountainBike makes its own implementation of brake() and
+					SportsBike makes its own implementation of brake().
+
+
+				Key Points to Remember::
+
+					1. We use the abstract keyword to create abstract classes and methods.
+
+					2. An abstract method doesn't have any implementation (method body).
+
+					3. A class containing abstract methods should also be abstract.
+
+					4. We cannot create objects of an abstract class.
+
+					5. To implement features of an abstract class, we inherit subclasses
+					   from it and create objects of the subclass.
+
+					6. A subclass must override all abstract methods of an abstract class.
+					   However, if the subclass is declared abstract, it's not mandatory
+					   to override abstract methods.
+
+					7. We can access the static attributes and methods of an abstract
+					   class using the reference of the abstract class. For example,
+
+
+		____B. Java Interface :
+
+				An interface is a fully abstract class. It includes a group of
+				abstract methods (methods without a body).
+
+				We use the interface keyword to create an ''' interface ''' in Java.
+
+
+				interface Language {
+
+				   public void getType();
+
+				   public void getVersion();
+
+				}
+
+				Here:
+
+				 Language is an interface.
+
+				 It includes abstract methods: getType() and getVersion().
+
+
+
+				1. Like abstract classes, we cannot create objects of interfaces.
+
+				2. To use an interface, other classes must implement it.
+				   We use the implements keyword to implement an interface.
+
+				Example 1: Java Interface
+
+					interface Polygon {
+					  void getArea(int length, int breadth);
+					}
+
+					// implement the Polygon interface
+					class Rectangle implements Polygon {
+
+					  // implementation of abstract method
+					  public void getArea(int length, int breadth) {
+					    System.out.println("The area of the rectangle is " + (length * breadth));
+					  }
+					}
+
+					class Main {
+					  public static void main(String[] args) {
+					    Rectangle r1 = new Rectangle();
+					    r1.getArea(5, 6);
+					  }
+					}
+
+				Output :
+					The area of the rectangle is 30
+
+				In the above example, we have created an interface named Polygon.
+				The interface contains an abstract method getArea().
+
+				Here, the Rectangle class implements Polygon. And, provides
+				the implementation of the getArea() method.
+
+
+
+				Implementing Multiple Interfaces:
+					In Java, a class can also implement multiple interfaces.
+
+
+					interface A {
+					  // members of A
+					}
+
+					interface B {
+					  // members of B
+					}
+
+					class C implements A, B {
+					  // abstract members of A
+					  // abstract members of B
+					}
+
+
+				Extending an Interface:
+					Similar to classes, interfaces can extend other interfaces
+
+					interface Line {
+					  // members of Line interface
+					}
+
+					// extending interface
+					interface Polygon extends Line {
+					  // members of Polygon interface
+					  // members of Line interface
+					}
+
+				IMPORTANT ::
+
+					Interfaces are also used to achieve multiple inheritance in Java
+
+					interface Line {
+					…
+					}
+
+					interface Polygon {
+					…
+					}
+
+					class Rectangle implements Line, Polygon {
+					…
+					}
+
+					Here, the class Rectangle is implementing two different interfaces.
+					This is how we achieve multiple inheritance in Java
+
+
+
+					Difference between abstract class and interface::
+
+
+					ABSTRACT CLASS                            INTERFACE
+
+				    1. Abstract class can have abstract       Interface can have only abstract methods
+					   and non-abstract methods.
+
+					2. Abstract class doesn't support         Interface supports multiple inheritance.
+					   multiple inheritance.
+
+					3. Abstract class can have final,         Interface has only static and final variables.
+					   non-final, static and non-static
+					   variables
+
+
+					4. An abstract class can extend another   An interface can extend another Java interface only
+					   Java class and implement multiple
+					   Java interfaces.
+
+
+					5. A Java abstract class can have         Members of a Java interface are public by default.
+					   class members like private,
+					   protected, etc
+
+
+					 Simply, abstract class achieves partial abstraction (0 to 100%)
+					 whereas interface achieves fully abstraction (100%).
+
+_________________________________________________________________________________________________________________________________________________*/
+
+
+
+
